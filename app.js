@@ -25,7 +25,7 @@ app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 
 app.use('/', indexRouter);
 app.use('/memes', memesRouter);
-app.use('/memeinfo', memeRouter);
+app.use('/memedetails', memeRouter);
 app.use('/login', loginRouter);
 // app.use('/highlights', highlightsRouter);
 
