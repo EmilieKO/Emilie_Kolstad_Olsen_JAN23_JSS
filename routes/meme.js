@@ -3,6 +3,8 @@ var router = express.Router();
 // const { resolve } = require('path');
 const axios = require('axios');
 
-router.get('/', function (req, res, next) {});
+router.get('/', function (req, res, next) {
+    res.render('memeinfo')
+});
 
 module.exports = router;

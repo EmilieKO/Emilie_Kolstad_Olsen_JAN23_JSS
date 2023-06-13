@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var memesRouter = require('./routes/memes');
+var memeRouter = require('./routes/meme');
+var loginRouter = require('./routes/login');
 // var highlightsRouter = require('./routes/highlights');
 
 var app = express();
@@ -21,6 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 
 app.use('/', indexRouter);
+app.use('/memes', memesRouter);
+app.use('/memeinfo', memeRouter);
+app.use('/login', loginRouter);
 // app.use('/highlights', highlightsRouter);
 
 // catch 404 and forward to error handler
