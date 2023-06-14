@@ -13,15 +13,22 @@
 <body class="position-relative" data-bs-spy="scroll">
   <%- include('./partials/navbar.ejs') %>
     <section class="container">
-      <table class="table" id="table">
+      <table>
         <thead>
           <tr>
-            <th scope="col">Meme</th>
-            <th scope="col">Name</th>
-            <th scope="col">Options</th>
+            <th>Meme</th>
+            <th>Description</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
+            <% memeData.forEach((meme)=> { %>
+              <tr>
+                <td><img src="<%= meme.url %>" alt="<%= meme.name %>" style="width:20%"></td>
+                <td><%=meme.name%></td>
+                <td><button onclick="window.location.href='/memedetails'">Details</button></td>
+              </tr>
+              <% }) %>
         </tbody>
       </table>
     </section>
