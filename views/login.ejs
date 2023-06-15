@@ -6,7 +6,7 @@
         <link href="../../stylesheets/navbar.css" rel="stylesheet">
     </head>
     <body class="position-relative" data-bs-spy="scroll">
-        <%- include('./partials/navbar.ejs') %>
+    <%- include('./partials/navbar.ejs', { user: user }) %>
         <p>Login page</p>
         <div data-spy="scroll" data-target="#navbar" data-offset="0">
             <%- include('./partials/login.ejs')%>

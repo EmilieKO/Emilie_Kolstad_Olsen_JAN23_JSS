@@ -9,10 +9,11 @@
 </head>
 
 <body class="position-relative" data-bs-spy="scroll">
-  <%- include('./partials/navbar.ejs') %>
+  <%- include('./partials/navbar.ejs', { user: user } ) %>
   <p>boop</p>
     <section class="container">
       </div>
+      <%- include('./partials/memedetails.ejs')%>
     </section>
     <%- include('./partials/scripts.ejs') %>
 </body>

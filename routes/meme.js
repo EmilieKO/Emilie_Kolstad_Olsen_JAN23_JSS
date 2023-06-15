@@ -4,7 +4,12 @@ var router = express.Router();
 const axios = require('axios');
 
 router.get('/', function (req, res, next) {
-    res.render('memedetails')
+    if(!req.user) {
+      res.render('memedetails', { user: null });
+  }
+  else {
+    res.render('memedetails', {user: req.user});
+  }
 });
 
 module.exports = router;

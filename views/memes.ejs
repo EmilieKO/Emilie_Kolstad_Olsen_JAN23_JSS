@@ -11,7 +11,7 @@
 </head>
 
 <body class="position-relative" data-bs-spy="scroll">
-  <%- include('./partials/navbar.ejs') %>
+  <%- include('./partials/navbar.ejs',{ user: user } ) %>
     <section class="container">
       <table>
         <thead>
@@ -26,7 +26,12 @@
               <tr>
                 <td><img src="<%= meme.url %>" alt="<%= meme.name %>" style="width:20%"></td>
                 <td><%=meme.name%></td>
-                <td><button onclick="window.location.href='/memedetails'">Details</button></td>
+                <% if(!user) { %>
+                <td>Log in to see details</td>
+                <% } %>
+                <% if (user) { %>
+                <td><button onclick="post()">Details</button></td>
+                <% } %>
               </tr>
               <% }) %>
         </tbody>
