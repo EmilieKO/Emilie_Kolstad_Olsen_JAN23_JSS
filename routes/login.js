@@ -37,7 +37,6 @@ router.post('/password', passport.authenticate('local', {
   successReturnToOrRedirect: '/memes',
   failureRedirect: '/login'
 }), function(req, res) {
-  // Store the user object in the session
   req.session.user = req.user;
   res.redirect('/');
 });

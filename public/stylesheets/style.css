@@ -12,20 +12,63 @@ td {
   box-sizing: border-box;
   text-align: center;
   vertical-align: middle;
+  width: 80%
 }
 
 th {
   text-align: center;
+  background-color: lightgray;
+  padding: 12px;
 }
 
 table {
-  border: #212529;
-  border-radius: 10px;
-  border-width: 1px;
-  width: 75%;
+  border: 1px solid #ddd;
+  width: 100%;
   margin-bottom: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+tr{
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+tr:hover {
+  background-color: rgb(219, 217, 217);
 }
 
 tr.selected {
   background-color: lightgray;
+}
+#search {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+form.form button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  /* Prevent double borders */
+  cursor: pointer;
+}
+form.form button:hover {
+  background: #0b7dda;
+}
+
+#detailHeader {
+  text-align: center;
+}
+
+.flexcontainer {
+  display: flex;
+  align-items: center;
 }

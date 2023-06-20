@@ -5,17 +5,20 @@
   <title>Meme Info</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css" />
   <link href="../stylesheets/navbar.css" rel="stylesheet">
+    <link href="../../stylesheets/style.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="../stylesheets/meme.css"> -->
 </head>
 
 <body class="position-relative" data-bs-spy="scroll">
   <%- include('./partials/navbar.ejs', { user: user } ) %>
-  <p>boop</p>
+  <section class="container">
     <section class="container">
       </div>
       <%- include('./partials/memedetails.ejs')%>
     </section>
-    <%- include('./partials/scripts.ejs') %>
-</body>
+
+  </section>
+  </body>
+  <%- include('./partials/scripts.ejs') %>
 
 </html>

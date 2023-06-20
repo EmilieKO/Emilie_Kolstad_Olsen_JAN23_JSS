@@ -5,6 +5,7 @@
   <title>Meme Overview</title>
   <!-- BM Chaneg the path to the css files -->
   <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="../../stylesheets/navbar.css" rel="stylesheet">
   <link href="../../stylesheets/style.css" rel="stylesheet">
 
@@ -13,7 +14,11 @@
 <body class="position-relative" data-bs-spy="scroll">
   <%- include('./partials/navbar.ejs',{ user: user } ) %>
     <section class="container">
-      <table>
+      <form class="form" onsubmit="event.preventDefault();">
+        <input type="text" id="search" placeholder="Search for memes..">
+        <button type="submit" id="search-button" onclick="memeSearch()"><i class="fa fa-search"></i></button>
+      </form>
+      <table id="memeTable">
         <thead>
           <tr>
             <th>Meme</th>
@@ -22,15 +27,16 @@
           </tr>
         </thead>
         <tbody>
+          <div id="memeDataContainer" data-memeData="<%= JSON.stringify(memeData) %>"></div>
             <% memeData.forEach((meme)=> { %>
-              <tr>
+              <tr data-id="<%= meme.id %>" data-width="<%= meme.width %>" data-height="<%= meme.height %>">
                 <td><img src="<%= meme.url %>" alt="<%= meme.name %>" style="width:20%"></td>
                 <td><%=meme.name%></td>
                 <% if(!user) { %>
                 <td>Log in to see details</td>
                 <% } %>
                 <% if (user) { %>
-                <td><button onclick="post()">Details</button></td>
+                <td><button onclick="post(this)">Details</button></td>
                 <% } %>
               </tr>
               <% }) %>
