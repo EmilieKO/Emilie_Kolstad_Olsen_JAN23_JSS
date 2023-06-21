@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-// const { resolve } = require('path');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
@@ -29,7 +28,6 @@ router.get('/', function (req, res, next) {
   else {
     res.render('memes', {memeData: memeData, user: req.user});
   }
-    // res.render('memes', { memeData });
     })
 });
 

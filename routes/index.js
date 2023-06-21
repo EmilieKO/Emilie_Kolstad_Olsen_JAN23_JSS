@@ -9,7 +9,6 @@ router.get('/', function (req, res, next) {
   else {
     res.render('index', {user: req.user});
   }
-  // res.render('index');
 });
 
 module.exports = router;

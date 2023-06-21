@@ -22,13 +22,11 @@ passport.use(new LocalStrategy(function verify(username, password, cb) {
   let filteredArray = usersArray.filter(x => x.username === username);
   if (filteredArray.length > 0) {
       let usersData = filteredArray[0];
-      console.log('error1')
     if (usersData.password == password) {
       return cb(null, usersData);
     }
   }
   else {
-      console.log('error2')
     return cb(null, false);
   }
 }));
@@ -44,10 +42,8 @@ router.post('/password', passport.authenticate('local', {
 router.get('/', function(req, res, next) {
   if(!req.user) {
       res.render('login', { user: null });
-      console.log('error3')
   }
   else {
-      console.log('error4')
     res.render('login', {user: req.user});
   }
 });
