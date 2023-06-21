@@ -4,6 +4,8 @@ const axios = require('axios');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+router.use(bodyParser.urlencoded({ extended: false }));
+
 router.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -14,13 +16,15 @@ router.use(session({
 router.get('/', function (req, res, next) { 
   const memeTransfer = req.session.memeTransfer;
   const user = req.user;  
-  res.render('memedetails', { user, memeTransfer });
+  res.render('memedetails', { memeTransfer: memeTransfer, user: user});
 })
 
 // POST request route
 router.post('/', function (req, res, next) {
   const memeTransfer = req.body;
+  console.log(memeTransfer); 
   req.session.memeTransfer = memeTransfer;
-})
+  res.sendStatus(200);
+});
 
 module.exports = router;

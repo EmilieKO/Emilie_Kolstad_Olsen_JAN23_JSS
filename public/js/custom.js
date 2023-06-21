@@ -50,6 +50,7 @@ function post(button) {
 
   console.log(selectedRow.html());
   console.log(memeTransfer);
+  console.log(queryString);
   window.open('/memedetails' + queryString);
 }
 
