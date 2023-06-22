@@ -4,15 +4,31 @@ var router = express.Router();
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+var session = require('express-session');
+
+router.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
+
+let memeResponse = []
+
+function fetchMemeData() {
+  let rawdata = fs.readFileSync(path.resolve(__dirname, '../data/api.json'))
+  let url = JSON.parse(rawdata);
+  axios
+    .get(url)
+    .then(response => {
+      console.log("api called")
+      memeResponse = response.data.data.memes;
+    })
+}
+
+fetchMemeData()
 
   router.get('/', function (req, res, next) {
-      let rawdata = fs.readFileSync(path.resolve(__dirname, '../data/api.json'))
-      let url = JSON.parse(rawdata);
-      axios
-      .get(url)
-      .then(response =>  {
-      const memes = response.data.data.memes;
-      const memeData = memes.map(meme => {
+      const memeData = memeResponse.map(meme => {
           return {
           name: meme.name,
           url: meme.url,
@@ -23,13 +39,12 @@ const path = require('path');
           
       });
           if (!req.user) {
-        res.render('memes', {memeData: memeData, user: null });
+        res.render('memes', {memeData: memeData, user: null, storedClass: req.session.selectedClass });
     }
     else {
-      res.render('memes', {memeData: memeData, user: req.user});
+      res.render('memes', {memeData: memeData, user: req.user, storedClass: req.session.selectedClass});
     }
-      // res.render('memes', { memeData });
       })
-  });
+;
 
 module.exports = router;

@@ -6,19 +6,19 @@ function open_new_window(location) {
 }
 
 window.onload = () => {
-  const currentUrl = window.location.href
+  function checkClass(selected) {
+    let rows = document.getElementsByClassName("tr");
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].classList.contains("selected")) {
+        return true;
+      }
+    }
+    return false;
+  }
+  if (checkClass()) {
+    ('tr').addClass(selected);
+  }
 }
-
-// const body = {
-//   userId: 1,
-//   title: "Fix my bugs",
-//   completed: false
-// };
-// $.post("https://jsonplaceholder.typicode.com/todos", body, (data, status) => {
-//   console.log(data);
-// });
-
-
 
 function post(button) {
   var selectedRow = $(button).closest('tr');
@@ -31,7 +31,7 @@ function post(button) {
     name: selectedRow.find('img').attr('alt')
   };
   var queryString = `?id=${encodeURIComponent(memeTransfer.id)}&width=${encodeURIComponent(memeTransfer.width)}&height=${encodeURIComponent(memeTransfer.height)}`;
-
+    
   $.ajax({
     type: "POST",
     url: "/memedetails",

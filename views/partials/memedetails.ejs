@@ -1,4 +1,4 @@
-
+    <% if (memeTransfer && user) { %>
         <h1 id="detailHeader">Meme Details</h1>
         <div class="flexcontainer">
             <div>
@@ -10,6 +10,14 @@
                     <li class="list-group-item">Id: <%= memeTransfer.id %></li>
                     <li class="list-group-item">Width: <%= memeTransfer.width %></li>
                     <li class="list-group-item">Height: <%= memeTransfer.height %></li>
+                    <li class="list-group-item">Url: <%= memeTransfer.url %></li>
                 </ul>
             </div>
         </div>
+    <%} else if (!user){ %>
+        <script>
+            window.location.href = '/login'
+        </script>
+    <% } else { %>
+        <h1>No meme details available</h1>
+        <% } %>
