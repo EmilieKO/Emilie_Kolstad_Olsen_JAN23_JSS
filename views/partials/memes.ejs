@@ -1,0 +1,31 @@
+
+    <form class="form" onsubmit="event.preventDefault();">
+        <input type="text" id="search" placeholder="Search for memes..">
+        <button type="submit" id="search-button" onclick="memeSearch()"><i class="fa fa-search"></i></button>
+    </form>
+    <table id="memeTable">
+        <thead>
+            <tr>
+                <th>Meme</th>
+                <th>Description</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <div id="memeDataContainer" data-memeData="<%= JSON.stringify(memeData) %>"></div>
+            <% memeData.forEach((meme)=> { %>
+                <tr data-id="<%= meme.id %>" data-width="<%= meme.width %>" data-height="<%= meme.height %>">
+                    <td><img src="<%= meme.url %>" alt="<%= meme.name %>" style="width:20%"></td>
+                    <td>
+                        <%=meme.name%>
+                    </td>
+                    <% if(!user) { %>
+                        <td>Log in to see details</td>
+                        <% } %>
+                            <% if (user) { %>
+                                <td><button onclick="post(this)">Details</button></td>
+                                <% } %>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>

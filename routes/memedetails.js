@@ -4,7 +4,6 @@ const axios = require('axios');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-router.use(bodyParser.urlencoded({ extended: false }));
 
 router.use(session({
   secret: 'keyboard cat',

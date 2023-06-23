@@ -22,6 +22,7 @@ function fetchMemeData() {
     .then(response => {
       console.log("api called")
       memeResponse = response.data.data.memes;
+      
     })
 }
 
@@ -39,12 +40,12 @@ fetchMemeData()
           
       });
           if (!req.user) {
-        res.render('memes', {memeData: memeData, user: null, storedClass: req.session.selectedClass });
+        res.render('memes', {memeData: memeData, user: null });
     }
     else {
-      res.render('memes', {memeData: memeData, user: req.user, storedClass: req.session.selectedClass});
+      res.render('memes', {memeData: memeData, user: req.user });
     }
       })
-;
+
 
 module.exports = router;

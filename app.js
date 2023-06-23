@@ -10,7 +10,7 @@ var JsonStore = require('express-session-json')(session)
 
 var indexRouter = require('./routes/index');
 var memesRouter = require('./routes/memes');
-var memeRouter = require('./routes/meme');
+var memeRouter = require('./routes/memedetails');
 var loginRouter = require('./routes/login');
 // var highlightsRouter = require('./routes/highlights');
 
