@@ -3,26 +3,13 @@ function open_new_window(location) {
   window.location.href = location;
 }
 
-window.onload = () => {
-  function checkClass() {
-    let rows = document.querySelectorAll("tr");
-    for (let i = 0; i < rows.length; i++) {
-      if (rows[i].classList.contains("selected")) {
-        return true;
-      }
-    }
-    return false;
-  }
-  if (checkClass()) {
-    let selectedRow = document.querySelectorAll(".selected")
-    selectedRow.forEach(row => row.classList.add("selected"));
-  }
-}
 
 function post(button) {
   var selectedRow = $(button).closest('tr');
   selectedRow.toggleClass('selected');
 
+  let selectedContent = selectedRow.html();
+  localStorage.setItem('selectedContent', selectedContent);
 
   const memeTransfer = {
     id: selectedRow.data('id'),
@@ -49,6 +36,18 @@ function post(button) {
   });
   window.open('/memedetails');
 }
+
+$(document).ready(function () { 
+  let selectedContent = localStorage.getItem('selectedContent');
+
+  if (selectedContent !== null) {
+    $('tr').each(function () {
+      if ($(this).html() === selectedContent) {
+        $(this).addClass('selected')
+      }
+    });
+  }
+})
 
 
 function memeSearch() {
